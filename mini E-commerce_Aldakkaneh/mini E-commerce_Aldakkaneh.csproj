@@ -337,9 +337,6 @@
     <Content Include="Views\Customers\Login.cshtml" />
     <Content Include="Views\Products\prodect_categurey.cshtml" />
     <Content Include="Views\Customers\Profile.cshtml" />
-    <Content Include="Views\Carts\Delete.cshtml" />
-    <Content Include="Views\Carts\Index.cshtml" />
-    <Content Include="Views\Carts\Edit.cshtml" />
     <Content Include="Views\Carts\Checkout.cshtml" />
     <Content Include="Views\Payments\Create.cshtml" />
     <Content Include="Views\Payments\Delete.cshtml" />
