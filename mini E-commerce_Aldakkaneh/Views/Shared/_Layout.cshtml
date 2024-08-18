@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="~/Views/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column min-vh-100" style="background: linear-gradient(135deg, #001f3f 0%, #9c27b0 100%);">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                <img src="~/imges/logo_min_project.png" alt="شعار" style="height: 100px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل الملاحة">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        @Html.ActionLink("الصفحة الرئيسية", "Index", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("حول", "About", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("تواصل معنا", "Contact", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("متجر", "prodect", "Products", new { area = "" }, new { @class = "nav-link text-dark" })
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            تصنيفات
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("prodect_categurey", "Products", new { category = "شوكلاته" })">شوكلاته</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("prodect_categurey", "Products", new { category = "اللحوم" })">اللحوم</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("prodect_categurey", "Products", new { category = "الأسماك" })">الأسماك</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("prodect_categurey", "Products", new { category = "الحبوب الغذائية والبقوليات" })">الحبوب الغذائية والبقوليات</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("prodect_categurey", "Products", new { category = "شيبس" })">شيبس</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("prodect_categurey", "Products", new { category = "منتجات التنظيف والمساحيق" })">منتجات التنظيف والمساحيق</a></li>
+                        </ul>
+                    </li>
+                    @if (Session["CustomerName"] != null)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                حسابي
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="@Url.Action("Profile", "Customers", new { id = Session["CustomerId"] })">
+                                        ملف شخصي
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-danger" href="@Url.Action("Logout", "Customers")">
+                                        تسجيل خروج
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index", "Carts")" class="nav-link text-dark">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("تسجيل دخول", "Login", "Customers", new { area = "" }, new { @class = "nav-link text-dark" })
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid flex-grow-1">
+        @RenderBody()
+    </div>
+
+    <footer class="text-center bg-light py-5 mt-auto w-100 shadow-lg">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 col-md-8">
+                    <ul class="nav justify-content-center mb-3">
+                        <li class="nav-item">
+                            @Html.ActionLink("الصفحة الرئيسية", "Index", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("حول", "About", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("تواصل معنا", "Contact", "Home", new { area = "" }, new { @class = "nav-link text-dark" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("متجر", "Store", "Prodect", new { area = "" }, new { @class = "nav-link text-dark" })
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 d-flex justify-content-around align-items-center flex-wrap">
+                    <a href="https://facebook.com" target="_blank" class="btn btn-primary btn-lg rounded-circle mb-2" aria-label="فيسبوك">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="btn btn-info btn-lg rounded-circle mb-2" aria-label="تويتر">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="btn btn-danger btn-lg rounded-circle mb-2" aria-label="إنستاجرام">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="btn btn-primary btn-lg rounded-circle mb-2" aria-label="لينكدإن">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <button type="button" class="btn btn-success btn-lg mb-2 rounded-circle" onclick="window.location.href='tel:+0777956583'">
+                        <i class="fas fa-phone-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="container">
+                <div class="d-flex justify-content-center align-items-center text-black" style="overflow: hidden; white-space: nowrap;">
+                    <img src="~/imges/علم الاردن.png" alt="Jordanian Flag" class="me-3" style="height: 50px;">
+                    <div class="scrolling-banner-text d-inline-block fw-bold" style="animation: scroll 15s linear infinite;">
+                        معا لدعم فلسطين
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

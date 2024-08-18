@@ -1,0 +1,74 @@
+﻿@model mini_E_commerce_Aldakkaneh.Models.Customer
+
+@{
+    ViewBag.Title = "تسجيل الدخول";
+}
+
+<br />
+<br />
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container">
+        <div class="row">
+            <!-- Left side: Form -->
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <div class="card border-0 shadow-lg h-100" style="background-color: white;">
+                    <div class="card-body p-5">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <h3 class="text-center mb-4" style="color: #001f3f;">تسجيل الدخول</h3>
+
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.email, "البريد الإلكتروني", htmlAttributes: new { @class = "form-label", style = "color: #001f3f;" })
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", style = "border-color: #001f3f; color: #001f3f; width: 100%; max-width: 400px;" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.password, "كلمة المرور", htmlAttributes: new { @class = "form-label", style = "color: #001f3f;" })
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", type = "password", style = "border-color: #001f3f; color: #001f3f; width: 100%; max-width: 400px;" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="d-grid justify-content-center">
+                                <input type="submit" value="تسجيل الدخول" class="btn btn-lg" style="background-color: #001f3f; color: white;" />
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <p>ليس لديك حساب؟ @Html.ActionLink("التسجيل", "registration", null, new { @class = "text-primary" })</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Right side: Image -->
+            <div class="col-lg-6 col-md-4 d-none d-lg-block">
+                <div class="h-100">
+
+                    <img src="~/imges/welcome page.png" alt="Login Image" class="img-fluid h-100 w-100" style="object-fit: cover;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*@if (TempData["SuccessMessage"] != null)
+    {
+        <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function() {
+             Swal.fire({
+                 icon: 'success',
+                 title: 'تم التسجيل بنجاح',
+                 text: '@TempData["SuccessMessage"]'
+             });
+         });
+        </script>
+    }*@
+}
+
+

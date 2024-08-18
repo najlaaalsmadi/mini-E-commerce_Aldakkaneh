@@ -1,0 +1,205 @@
+﻿@model IEnumerable<mini_E_commerce_Aldakkaneh.Models.Product>
+
+@{
+    ViewBag.Title = "الصفحة الرئيسية";
+}
+
+<!-- استيراد CSS الخاص بـ Bootstrap -->
+<style>
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .carousel-item {
+        height: 400px;
+    }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+    .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .card {
+        transition: transform 0.3s;
+        cursor: pointer;
+        background-color: #003366; /* لون كحلي للخلفية */
+        color: #ffffff; /* لون أبيض للنصوص */
+        border: none; /* إزالة الحدود الافتراضية */
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            object-fit: cover;
+            height: 200px; /* تعديل حجم الصورة حسب الحاجة */
+            width: 100%;
+        }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .shop-button {
+        transition: background-color 0.3s;
+    }
+
+        .shop-button:hover {
+            background-color: #444;
+        }
+
+    h2 {
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+</style>
+
+<!-- قسم السلايدر الرئيسي -->
+<section class="hero-slider" style="color:white;">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/imges/slide1.png" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>أهلاً وسهلاً بكم في محلنا</h1>
+                    <p>نحن موجودون لخدمتكم</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/imges/slide2.png" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>أهلاً وسهلاً بكم في محلنا</h1>
+                    <p>نحن موجودون لخدمتكم</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/imges/slide3.png" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>أهلاً وسهلاً بكم في محلنا</h1>
+                    <p>نحن موجودون لخدمتكم</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/imges/slide4.png" class="d-block w-100" alt="Slide 4">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>أهلاً وسهلاً بكم في محلنا</h1>
+                    <p>نحن موجودون لخدمتكم</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">السابق</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">التالي</span>
+        </button>
+    </div>
+</section>
+
+<!-- قسم التصنيفات -->
+<h2 class="text-center my-5" style="color:white;">اصناف</h2>
+<section class="container my-5">
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/imges/img1.png" class="card-img-top" alt="Category 1">
+                <div class="card-body">
+                    <h3 class="card-title">الحبوب الغذائية والبقوليات</h3>
+                    <p class="card-text">استعرض منتجاتنا من البقوليات</p>
+
+                    <a href="@Url.Action("prodect_categurey", "Products", new { category = "الحبوب الغذائية والبقوليات" })" class="btn btn-light" style="background-color: white; color: #9c27b0;">
+                        تسوق الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/imges/مواد تنظيف.png" class="card-img-top" alt="Category 2">
+                <div class="card-body">
+                    <h3 class="card-title">مواد تنظيف</h3>
+                    <p class="card-text">استعرض منتجاتنا من مواد تنظيف</p>
+                    <a href="@Url.Action("prodect_categurey", "Products", new { category = "منتجات التنظيف والمساحيق" })" class="btn btn-light" style="background-color: white; color: #9c27b0;">
+                        تسوق الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="~/imges/شكولاته.png" class="card-img-top" alt="Category 3">
+                <div class="card-body">
+                    <h3 class="card-title">شكولاته</h3>
+                    <p class="card-text">استعرض منتجاتنا في هذه الفئة</p>
+                    <a href="@Url.Action("prodect_categurey", "Products", new { category = "شوكلاته" })" class="btn btn-light" style="background-color: white; color: #9c27b0;">
+                        تسوق الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- قسم المنتجات -->
+<h2 class="text-center my-5" style="color:white;">بعض المنتجات</h2>
+<section class="container my-5">
+    <div class="row text-center">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model.Take(3))
+            {
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="~/imges/@item.imgprodect" class="card-img-top" alt="Product Image">
+                        <div class="card-body">
+                            <h3 class="card-title">@item.description</h3>
+                            <p class="card-text">السعر: @item.price</p>
+                            @if (Session["CustomerName"] != null)
+                            {
+                                <a href="@Url.Action("prodect_detilies", "Products", new { id = item.product_id })" class="btn btn-light" style="background-color: white; color: #9c27b0;">تسوق الآن</a>
+                            }
+                            else
+                            {
+                        <a href="@Url.Action("Login", "Customers", new { id = item.product_id })" class="btn btn-lg" style="background-color: blueviolet; color: white;">تسجيل دخول</a>
+
+                             }
+                            </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-center" style="color:white;">@ViewBag.NoProductsMessage</p>
+        }
+    </div>
+</section>
+
+<!-- قسم المتجر -->
+<section class="text-center my-5">
+    <p style="color:white;">مزيد من المنتجات؟</p>
+    <a href="@Url.Action("Login", "Customers")" class="btn btn-dark" style="background-color: black; color: #9c27b0;">مزيد</a>
+</section>
+
+<!-- استيراد JavaScript وملحقاته -->
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

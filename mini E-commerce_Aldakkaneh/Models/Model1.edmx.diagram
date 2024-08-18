@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c449cccbd525418590aa10521888357d" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="AldakkanehModel.Cart" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.Category" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.Customer" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.IOrder" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.Order_Item" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.Payment" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.Product" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AldakkanehModel.Wishlist" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="AldakkanehModel.FK__Cart__customer_i__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK__Product__categor__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK__IOrder__customer__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK__Payment__custome__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK__Wishlist__custom__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK__Order_Ite__order__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK__Order_Ite__produ__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="AldakkanehModel.FK_Order_Item_Customer" />
+        <AssociationConnector Association="AldakkanehModel.FK__Cart__product_id__5EBF139D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

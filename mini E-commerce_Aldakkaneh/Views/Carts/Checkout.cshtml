@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "صفحة الطلب";
+    var totalSum = ViewBag.TotalSum;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Order Summary -->
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">ملخص الطلب</h5>
+                    <p class="card-text">إجمالي المبلغ: <span>JOR @totalSum</span></p>
+                    <hr>
+                    <p class="text-muted">5 نقاط مكافأة</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shipping Address and Payment Form -->
+        <div class="col-md-8">
+            <h5>عنوان الشحن</h5>
+            <form id="orderForm">
+                <div class="form-group mb-3">
+                    <input type="text" id="name" class="form-control" placeholder="الاسم" required>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" id="phone" class="form-control" placeholder="رقم الهاتف" required>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" id="alternatePhone" class="form-control" placeholder="رقم الهاتف البديل (اختياري)">
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" id="city" class="form-control" placeholder="المدينة" required>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" id="address" class="form-control" placeholder="تفاصيل العنوان" required>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" id="postalCode" class="form-control" placeholder="رمز البريد" required>
+                </div>
+                <div class="form-group mb-3">
+                    <input type="text" id="landmark" class="form-control" placeholder="المعلم الرئيسي (اختياري)">
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="mb-4">
+                    <h5 class="text-light">طريقة الدفع</h5>
+                    <div class="form-check border p-2 rounded mb-2">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="visaMasterCard" value="visaMasterCard">
+                        <label class="form-check-label text-light" for="visaMasterCard" >
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Visa.svg/1200px-Visa.svg.png" alt="Visa/MasterCard" class="me-2" style="width: 30px;">
+                            Visa / MasterCard
+                        </label>
+                    </div>
+                    <div class="form-check border p-2 rounded mb-2">
+                        <input class="form-check-input" type="radio" name="paymentMethod" id="paypal" value="paypal">
+                        <label class="form-check-label text-light" for="paypal">
+                            <img src="~/imges/PayPal.png" alt="PayPal" class="me-2" style="width: 30px;">
+                            PayPal
+                        </label>
+                    </div>
+                   
+                    <div class="form-check border p-2 rounded mb-2">
+                        <input class="form-check-input " type="radio" name="paymentMethod" id="cod" value="cod">
+                        <label class="form-check-label text-light" for="cod">
+                            <img src="~/imges/Cash on Delivery.jpg"  alt="Cash on Delivery" class="me-2" style="width: 30px;">
+                            الدفع عند الاستلام (+ 1 دينار)
+                        </label>
+                    </div>
+                </div>
+
+              
+            </form>
+        </div>
+    </div>
+</div>
