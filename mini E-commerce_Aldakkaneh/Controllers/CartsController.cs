@@ -9,10 +9,15 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using mini_E_commerce_Aldakkaneh.Models;
 
+
 namespace mini_E_commerce_Aldakkaneh.Controllers
 {
     public class CartsController : Controller
     {
+        private readonly string PayPalBaseUrl = "https://api.sandbox.paypal.com/";
+        private readonly string ClientId = "AZdkr6v_1FZG68xLjacHS8bQeVRiMqCBFcaSEhyp_W8mYwjwG3hUkNkdpHoUaXiGd4VhtLdMCIW4zG_C";
+        private readonly string Secret = "EOSNx_ek2CYg6N2WqM4i81m2bXAyZ72hdY-pcX23yepPpHbarU8eDLiKpBVkpZ4pFwPMOiZ2WX7FwTj3";
+
         private AldakkanehEntities db = new AldakkanehEntities();
 
         // GET: Carts
@@ -63,7 +68,8 @@ namespace mini_E_commerce_Aldakkaneh.Controllers
         // In your CartController
         public ActionResult Checkout(decimal totalSum)
         {
-            ViewBag.TotalSum = totalSum;
+            Session["TotalSum"] = totalSum;
+
             return View();
         }
 
@@ -154,7 +160,7 @@ namespace mini_E_commerce_Aldakkaneh.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
+            {                                            
                 db.Dispose();
             }
             base.Dispose(disposing);

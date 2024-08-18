@@ -3,74 +3,59 @@
 @{
     ViewBag.Title = "تفاصيل المنتج";
 }
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    .product-details {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 15px;
-        background-color: #f8f9fa;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
 
-        .product-details img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="product-details alert alert-light p-4 shadow-lg">
+                <h3 class="text-center mb-4">تفاصيل المنتج</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="../../imges/@Model.imgprodect" alt="صورة المنتج" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+                    </div>
 
-        .product-details h1 {
-            color: #333;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+                    <div class="col-md-6">
+                        <dl class="row">
+                            <dt class="col-sm-4">
+                                وصف المنتج
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Model.description
+                            </dd>
 
-        .product-details p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: blueviolet;
-        }
+                            <dt class="col-sm-4">
+                                التصنيف
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Model.Category.name
+                            </dd>
 
-        .product-details .price {
-            font-size: 1.8rem;
-            color: rebeccapurple;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
+                            <dt class="col-sm-4">
+                                السعر
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Model.price
+                            </dd>
+                        </dl>
 
-        .product-details .btn {
-            padding: 10px 20px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-        }
+                        <form action="@Url.Action("AddToCart", "Carts")" method="post" class="mt-4">
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">الكمية:</label>
+                                <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1" />
+                            </div>
+                            <input type="hidden" name="productId" value="@Model.product_id" />
+                            <button type="submit" class="btn btn-primary" style="background-color:darkmagenta">أضف إلى السلة</button>
 
-        .product-details .btn-add-to-cart {
-            background-color: blueviolet;
-            color: white;
-        }
+                        </form>
+                        <br />
+                        <a href="@Url.Action("prodect", "Products")" class="btn btn-secondary" style="background-color:blueviolet">الرجوع لصفحة المنتجات</a>
 
-        .product-details .btn-back {
-            background-color: #6c757d;
-            color: white;
-        }
-</style>
-
-<div class="container">
-    <div class="product-details">
-        <img src="../../imges/@Model.imgprodect" alt="Product Image" class="mb-4">
-        <h1>@Model.description</h1>
-        <p><strong>التصنيف:</strong> @Model.Category.name</p>
-        <p class="price">السعر: @Model.price</p>
-        <form action="@Url.Action("AddToCart", "Carts")" method="post">
-            <div class="mb-3">
-                <label for="quantity" class="form-label">الكمية:</label>
-                <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1" />
+                     
+                    </div>
+                </div>
             </div>
-            <input type="hidden" name="productId" value="@Model.product_id" />
-            <button type="submit" class="btn btn-add-to-cart">أضف إلى السلة</button>
-        </form>
-        <br />
-        <a href="@Url.Action("prodect", "Products")" class="btn btn-back">الرجوع لصفحة المنتجات</a>
+        </div>
     </div>
 </div>
