@@ -1,19 +1,141 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "اتصل بنا";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+<div class="container-fluid px-5 my-5">
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10">
+            <div class="card border-0 rounded-3 shadow-lg overflow-hidden" style="background-color: #fff; color: #000;">
+                <div class="row g-0">
+                    <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center p-4" style="background-color: #6f42c1;">
+                        <div class="text-center text-white">
+                            <h2>مرحبًا بك في دكانة عجلون</h2>
+                            <p>نحن هنا للرد على استفساراتك ومساعدتك في أي شيء تحتاجه.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-4">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-light">تواصل معنا</h3>
+                        </div>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
-</main>
+                        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @onsubmit = "displayAlert(this); return false;" }))
+                        {
+                            <!-- Name Input -->
+                            <div class="form-floating mb-3">
+                                <input type="text" name="name" id="name" required class="form-control" placeholder="الاسم" />
+                                <label for="name">الاسم</label>
+                            </div>
+
+                            <!-- Email Input -->
+                            <div class="form-floating mb-3">
+                                <input type="email" name="email" id="email" required class="form-control" placeholder="البريد الالكتروني" />
+                                <label for="email">البريد الالكتروني</label>
+                            </div>
+
+                            <!-- Subject Input -->
+                            <div class="form-floating mb-3">
+                                <input type="text" name="subject" id="subject" required class="form-control" placeholder="الموضوع" />
+                                <label for="subject">الموضوع</label>
+                            </div>
+
+                            <!-- Message Input -->
+                            <div class="form-floating mb-3">
+                                <textarea name="message" id="message" rows="4" required class="form-control" placeholder="رسالتك"></textarea>
+                                <label for="message">رسالتك</label>
+                            </div>
+
+                            <!-- Submit button -->
+                            <div class="d-grid">
+                                <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">ارسال</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('input, textarea').on('input', function () {
+                let allFilled = true;
+
+                $('input[required], textarea[required]').each(function () {
+                    if ($(this).val() === '') {
+                        allFilled = false;
+                    }
+                });
+
+                if (allFilled) {
+                    $('#submitButton').removeClass('disabled').prop('disabled', false);
+                } else {
+                    $('#submitButton').addClass('disabled').prop('disabled', true);
+                }
+            });
+
+            $('input[required], textarea[required]').trigger('input');
+        });
+    </script>
+}
+
+<script type="text/javascript">
+    function displayAlert(form) {
+        Swal.fire({
+            title: "شكرا لتواصلك مع دكانة عجلون",
+            text: "سوف يتم التواصل معكم باقرب وقت ممكن وارسال بريد الكتروني لها",
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1800,
+        });
+
+        setTimeout(function () {
+            form.submit();
+        }, 2000);
+    }
+</script>
+
+<style>
+    /* Card Styles */
+    .card {
+        border-radius: 15px;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+        background-color: #6f42c1; /* Purple background */
+        border-color: #6f42c1; /* Purple border */
+    }
+
+        .btn-primary:hover {
+            background-color: #5a32a3; /* Darker purple on hover */
+            border-color: #5a32a3; /* Darker purple on hover */
+        }
+
+    /* Input and Textarea Styles */
+    .form-control {
+        background-color: #fff; /* White background */
+        border: 1px solid #000; /* Black border */
+        color: #000; /* Black text */
+    }
+
+        .form-control:focus {
+            border-color: #6f42c1; /* Purple border on focus */
+            box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Purple shadow on focus */
+        }
+
+    /* Floating Label Styles */
+    .form-floating .form-control:focus + label {
+        color: #6f42c1; /* Purple label on focus */
+    }
+
+    /* Card Left Section (Purple Background) */
+    .card .col-md-6 {
+        background-color: #6f42c1;
+        color: #fff;
+    }
+</style>
